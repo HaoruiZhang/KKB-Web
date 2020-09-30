@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">点击</button>
+</body>
+<script>
+function fn1(){
+    console.log("fn1...");
+}
+
+function fn2(){
+    console.log("fn2...");
+}
+
+function fn3(){
+    console.log("fn3...");
+}
+// ....
+// fn1();
+// fn2();
+// fn3();
+// document.querySelector(".btn").addEventListener("click",fn1)
+// document.querySelector(".btn").addEventListener("click",fn2)
+// document.querySelector(".btn").addEventListener("click",fn3)
+
+let handle = {};
+// {"myevent":[fn1,fn2,fn3],}
+function addEvent(eventName,fn){
+    // 保存事件；
+    if(!(eventName in handle)){
+        handle[eventName] = [];
+    }
+    handle[eventName].push(fn);
+}
+function trigger(eventName){
+    if(typeof handle[eventName] !== 'undefined'){
+        handle[eventName].forEach(event=>{
+            event();
+        })
+    }
+}
+// 绑定自定义事件
+addEvent("myevent",fn1);
+addEvent("myevent",fn2);
+addEvent("myevent",fn3);
+// console.log(handle);
+// 触发自定义事件
+
+trigger("myevent");
+
+
+
+
+
+
+
+</script>
+</html>

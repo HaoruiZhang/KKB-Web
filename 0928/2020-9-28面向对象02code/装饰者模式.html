@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 装饰者；
+    class Hero{
+        constructor(){
+            this.name = "亚瑟";
+        }
+        fire(){
+            console.log("释放了技能");
+        }
+    }
+
+    // 继承 --》 扩展；（扩展新的方法）；
+    //扩展 加强特征； 
+
+    function hurt(num){
+        console.log("造成"+num+"点伤害");
+    }
+
+    Function.prototype.Decorator = function(fn,...arg){
+        this();
+        // arg 不定参；
+        fn(...arg);
+    }
+
+    let yase  = new Hero();
+    // yase.fire();
+    yase.fire.Decorator(hurt,100);
+
+
+
+</script>
+</html>

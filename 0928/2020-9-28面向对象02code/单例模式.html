@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+// 设计：设计原则   模式  ：设计模式
+
+// 设计原则 ： solid 
+// 1.单一职责 2. 开闭原则  3.里氏替换 4.迪米特法则 5接口隔离 6.依赖倒置原则；
+
+// 设计模式；
+
+// 全局变量
+// 单例模式；document  window 单例；
+// let instance;
+// class Person{
+//     constructor(name){
+//         if(instance){
+//             return instance;
+//         }
+//         instance = this;
+//         this.name = name;
+//     }
+// }
+
+// let zhangsan = new Person("张三");
+// console.log(zhangsan);
+// let lisi = new Person("李四");
+// console.log(lisi);
+
+
+
+// 静态属性
+// 单例模式
+// class Person {
+//     static instance;
+//     constructor(name){
+//         if(Person.instance){
+//             return Person.instance;
+//         }
+//         Person.instance = this;
+//         this.name = name;
+//     }
+// }
+
+// class Animal{
+//     static instance;
+//     constructor(name){
+//         if(Person.instance){
+//             return Person.instance;
+//         }
+//         Person.instance = this;
+//         this.name = name;
+//     }
+// }
+
+// let zhangsan = new Person("张三");
+// console.log(zhangsan);
+// let lisi = new Person("李四");
+// console.log(lisi);
+
+
+// 通过函数；
+
+class Person {
+    constructor(name){
+        this.name = name;
+    }
+}
+
+class Animal{
+    constructor(name){
+        this.name = name;
+    }
+}
+
+// 高阶函数：有函数作为参数输入 或者是输出的函数；
+function getSingle(fn){
+    // 缓存；pipe  compose  组合函数；
+    // 变量记录实例化对象
+    let instance;
+    return function(...arg){
+        // arguments;
+        if(!instance){
+            instance = new fn(...arg);
+        }
+        return instance;
+    }
+}
+
+
+let createSingleFn = getSingle(Person);
+let zhangsan =  createSingleFn("张三");
+let lisi  =  createSingleFn("李四");
+console.log(zhangsan,lisi);
+
+
+</script>
+</html>
