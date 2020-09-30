@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 1.面向对象（复用性、扩展性）  oop   2.面向过程  ；
+    // 类 、对象、继承 、封装、抽象；
+    // 构造函数；ES5;
+    // function Person(){
+    //     this.myname = "张三";
+    // this.fn = function(){
+
+    // }
+    // }
+    // Person.prototype.fn = function(){
+    //     console.log("fn.....");
+    // }
+
+    // ES6 新的语法糖；
+    // class Person{
+    //     // 预定义函数
+    //     height = "178cm";
+    //     constructor(age){
+    //         this.myname = "张三";
+    //         this.age = age;
+    //     }
+    //     // 自定义函数
+    //     fn(arg){
+    //         console.log("fn.....",arg);
+    //     }
+    //fn2(arg){
+    //         console.log("fn.....",arg);
+    //     }
+    // }
+    // // console.log(typeof Person);s
+    // let zhangsan = new Person(23);
+    // zhangsan.fn("值");
+    // console.log(zhangsan);
+    // console.log(zhangsan.height)
+
+
+    // 静态成员；（和类自身有关系，和实例没有关系的）;
+
+    // function Person() {
+    //     this.myname = "张三";
+    //     this.fn = function () {
+    //         console.log("fn");
+    //     }
+
+    // }
+    // // ES5；
+    // Person.num = 10;
+    // let zhangsan = new Person();
+    // 全局变量；
+    // let num = 0;
+    // ES6
+    // class Person{
+    //     // 静态属性；
+    //     static num = 0;
+    //     constructor(myname){
+    //         this.myname = myname;
+    //         // num++;
+    //         Person.num++;
+    //     }
+    // }
+    // // Person.staticNum = 20;
+    // // console.log(Person.num);
+    // // 实例化次数；
+    // let zhangsan  = new Person("张三");
+    // let lisi  = new Person("李四");
+    // let lisis  = new Person("李四s");
+    // console.log(Person.num);
+
+    // 私有 共有；
+    // ES5
+//     function Person() {
+//         let str = "字符串"
+//         this.myname = "张三";
+//         this.fn = function () {
+//             console.log("fn");
+//         }
+//         this.getStr = function(){
+//             return str;
+//         }
+//     }
+//     let zhangsan = new Person();
+// //  console.log( zhangsan.str );
+//    let res =  zhangsan.getStr();
+//     console.log(res);
+
+// ES6; ES2020，ES11;
+// class Person{
+//     // 私有属性 #关键字  weight 自定义属性
+//     #weight = "78kg";
+//     constructor(myname){
+//         this.myname = myname;
+//     }
+//     fn(){
+//         console.log("fn");
+//     }
+//     getWeight(){
+//         return this.#weight;
+//     }
+// }
+// let zhangsan = new Person("张三");
+
+// // console.log( zhangsan.#weight );
+// let res =  zhangsan.getWeight();
+// console.log(res);
+
+// 继承；ES5
+// function Dad(myname,height){
+//     console.log(height);
+//     this.myname = myname;
+//     this.age = 53;
+// }
+
+// function Son(myname){
+//     Dad.call(this,myname,"178cm")
+// }
+// 原型继承？？？
+// let zhangsan = new Son("张三");
+// console.log(zhangsan.age);
+
+// ES6继承；
+class Dad{
+    static num = 10;
+    constructor(myname){
+        this.myname = myname;
+        this.age = 53;
+    }
+    // 处理原型的继承；
+    fn(){
+        console.log("父类 fn方法");
+    }
+}
+
+
+class Son extends Dad{
+    constructor(myname){
+        super(myname);  // 一定要在调用this之前调用
+        // console.log(this);
+        this.hobby = "篮球";
+    }
+    fn(){
+        super.fn();
+        console.log("子类的fn方法");
+    }
+}
+let zhangsan = new Son("张三");
+console.log(Son.num);
+// console.log(zhangsan.age);
+// console.log(zhangsan.myname);
+// zhangsan.fn();
+
+
+</script>
+
+</html>
