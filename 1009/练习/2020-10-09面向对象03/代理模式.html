@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // 代理模式；
+    // let zhangsan = {
+    //     sellHouse(num){
+    //         console.log("卖了"+num+"万元");
+    //     }
+    // }
+    // let proxySeller = {
+    //     sellHouse(hasSold,num){
+    //         if(hasSold){
+    //             // 房子卖了
+    //             zhangsan.sellHouse(num-10);
+    //         }else{
+    //             zhangsan.sellHouse(num);
+    //         }
+    //     }
+    // }
+    // // zhangsan.sellHouse(100);
+    // proxySeller.sellHouse(true,105);
+
+    // Proxy (get,set) --》数据劫持； ---> 实现数据响应式的核心；
+    let hero = {
+        hurt(num){
+            console.log("造成"+num+"伤害");
+        }
+    }
+
+    let heroProxy = {
+        proxyHurt(judge,num){
+            if(judge){
+                hero.hurt(num+10) ;
+            }else{
+                hero.hurt(num-10) ;
+            }
+        }
+    }
+    heroProxy.proxyHurt(false,100);
+
+
+
+
+</script>
+</html>

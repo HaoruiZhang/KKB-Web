@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 插值表达式 -->
+        <!-- {{message}}
+        <div>
+            {{message}}
+        </div> -->
+        <!-- <input type="text" v-model="message" />  {{message}} -->
+        <div v-html="message"></div>
+    </div>
+    <!-- {{message}} -->
+</body>
+<script>
+
+    // 1.如何把数据渲染到视图？？
+    // mvvm -->数据驱动--->数据响应式；
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            message:"<h1>数据</h1>"
+        }
+    })
+
+    // 2.如何实现数据响应式？？
+    // setTimeout(() => {
+    //     // console.log(vm) 
+    //     vm._data.message = "修改的数据"
+    // }, 1000);
+
+
+
+
+
+
+</script>
+</html>
